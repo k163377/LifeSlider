@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LifeSlider</string>
+
+    <string-array name="sexspnitems">
+        <item>男性</item>
+        <item>女性</item>
+    </string-array>>
+</resources>
