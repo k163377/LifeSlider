@@ -2,6 +2,7 @@ package com.wrongrong.lifeslider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -119,5 +120,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setProbability_text();
+    }
+
+    @Override
+    public void onDestroy(){
+        if(mAdView != null) mAdView.destroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        if(mAdView != null) mAdView.pause();
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) mAdView.resume();
     }
 }
