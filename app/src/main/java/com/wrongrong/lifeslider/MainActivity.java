@@ -2,7 +2,6 @@ package com.wrongrong.lifeslider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -18,18 +17,22 @@ public class MainActivity extends AppCompatActivity {
     AdView mAdView;
     Spinner sex_spinner;
     TextView probability_text;
-    TextView age_text,life_span_text;
-    SeekBar age_seek,life_span_seek;
+    TextView age_text;
+    TextView life_span_text;
+    SeekBar age_seek;
+    SeekBar life_span_seek;
+    //初期値
+    int age = 0;
+    int lifeSpan = 1;
+    boolean isMan = true;
 
-    int age,lifeSpan;
-    boolean isMan;
     final DecimalFormat df = new DecimalFormat("#0.000");
 
     private void setProbability_text(){
-        int start,end;
+        int start = 0;
+        int end;
         byte i;
         float p;
-        start=0;
 
         if(isMan) {
             for (i = 0; i < age; i++) start += Data.DeathTollOfMan[i];
@@ -49,10 +52,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //数値系初期化
-        age = 0;
-        lifeSpan = 1;
-        isMan = true;
         //AdView初期化
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-8906600258681229~4354084398");
         mAdView = (AdView) findViewById(R.id.adView);
