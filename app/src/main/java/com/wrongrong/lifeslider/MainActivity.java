@@ -29,21 +29,20 @@ public class MainActivity extends AppCompatActivity {
     final DecimalFormat df = new DecimalFormat("#0.000");
 
     private void setProbability_text(){
-        int start = 0;
-        int end;
-        byte i;
+        float start = 0;
+        float end;
         float p;
 
         if(isMan) {
-            for (i = 0; i < age; i++) start += Data.DeathTollOfMan[i];
+            for (int i = 0; i < age; i++) start += Data.DeathTollOfMan[i];
             end = start;
-            for (; i < lifeSpan; i++) end += Data.DeathTollOfMan[i];
-            p = ((float)(100000-end)/(float)(100000-start))*100;
+            for (int i = age; i < lifeSpan; i++) end += Data.DeathTollOfMan[i];
+            p = ((100000-end)/(100000-start))*100;
         }else{
-            for (i = 0; i < age; i++) start += Data.DeathTollOfWoman[i];
+            for (int i = 0; i < age; i++) start += Data.DeathTollOfWoman[i];
             end = start;
-            for (; i < lifeSpan; i++) end += Data.DeathTollOfWoman[i];
-            p = ((float)(100005-end)/(float)(100005-start))*100;
+            for (int i = age; i < lifeSpan; i++) end += Data.DeathTollOfWoman[i];
+            p = ((100005-end)/(100005-start))*100;
         }
         probability_text.setText(df.format(p));
     }
